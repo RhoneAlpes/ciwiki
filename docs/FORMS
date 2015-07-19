@@ -1,0 +1,44 @@
+There is a possibility to create a simple form with one entry, 
+usefull to make a todo list for example.
+
+There are 4 tags:
+{{entry}}
+{{data}}
+{{delete}}
+{{save}}
+
+{{entry}} create a simple entry field and a button "add".
+
+{{data}} mark the place where the entries are written (just after
+ the tag). This tag must be terminated with a new line.
+Note: A checkbox is automatically added with each entry.
+ 
+{{save}} saves the status of the checkbox (checked).
+{{delete}} removes the entries checked.
+
+
+Extra parameters for entry:
+
+tiny small medium large huge define the lenght of the entry.
+date inserts a date in the entry.
+data asks to write the entries after the tag {entry...} , {{data}} is not 
+required in this case. Example: {{entry large date data}}
+
+save and delete can be combined: {{save delete}}.
+
+Other examples of Todo list:
+Simple:
+
+{{entry large data}}
+{{save delete}}
+
+With labels:
+
+{{entry}}
+List of things to do:
+
+{{data}}
+
+Actions:
+{{delete save}}
+

@@ -1,0 +1,59 @@
+<<< QUICK START >>>
+
+1 - Install ciwiki (tar.gz file)
+
+[*] Stop ciwiki if running ( kill -15 `pidof ciwiki` )
+
+In the console, type:
+cd ciwiki-x    (x: version number, 2.0.0 for instance)
+./configure
+make
+sudo make install
+ciwiki   (or ciwiki -r   to reinstall WikiHelp)
+
+2 - Autostart
+
+Xfce: 
+Parameters => Session & Startup => Autostart => + Add
+Edit the name: ciwiki and the command: ciwiki
+Gnome:
+System => Preferences => Startup => Add
+Edit the name: ciwiki and the command: ciwiki
+
+
+3 - If problems
+
+In the console, type:
+whereis ciwiki
+return should be: /usr/local/bin/ciwiki
+
+ciwiki -v
+return should be: CiWiki - version x (x: the version installed)
+
+pidof ciwiki
+return should be: xxxx (xxxx: pid of ciwiki if it's running.)
+
+[*] Terminate ciwiki:
+kill -15 `pidof ciwiki`
+
+4 - Port
+
+* Normally is 8000
+When you lauch ciwiki (in the console) you should read:
+Attempting to bind to 0.0.0.0:8000 .. Success! 
+ciwiki Started. Please point your browser at 0.0.0.0:8000
+
+Then enter http://0.0.0.0:8000/ or http://localhost:8000/ in the address bar of Firefox...
+
+* If you want to choose another port (strongly recommanded to keep your privacy if your computer
+is a network):
+ciwiki -p xxxx  (xxxx: port number)
+
+* To allow other users on your netword to access to your wiki:
+You will have to give them your inet address and the port
+Type: ifconfig and look for 'net adr'
+The user will have to enter: http://xxx.xxx.xxx.xxx:yyyy
+xxx.xxx.xxx.xxx is the inet adr and yyyy the port number.
+
+To keep some page private (unreadable), use the tag {{private}}
+

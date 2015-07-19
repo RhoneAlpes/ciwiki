@@ -1,0 +1,26 @@
+To embed an animation or a video flash you need the address and the name 
+of the swf file.
+
+These examples will play games from www.neave.com and video from youtube.com
+
+1 - We have the exact address and name:
+
+youtube=http://www.neave.com/games/asteroids/asteroids.swf
+
+2 - The php script in the server provides the address and name:
+
+youtube=http://www.neave.com/games/get_game.php?swf=frogger
+
+3 - Youtube:
+
+When the html code is provided, here the example of youtube:
+<object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/s7ZKJU3AOo0&color1=0xb1b1b1&color2=0xd0d0d0&hl=en_US&feature=player_embedded&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed src="http://www.youtube.com/v/s7ZKJU3AOo0&color1=0xb1b1b1&color2=0xd0d0d0&hl=en_US&feature=player_embedded&fs=1" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="640" height="385"></embed></object>
+
+We have to look for the video ID in the tag <param name="movie"...
+We find: value="http://www.youtube.com/v/s7ZKJU3AOo0&color1=0xb1b1b1&color2=0xd0d0d0&hl=en_US&feature=player_embedded&fs=1"
+The ID of the video is s7ZKJU3AOo0 and the parameters after '&' can be omitted.
+So we have just to keep the adress: http://www.youtube.com/v/s7ZKJU3AOo0
+
+In your wiki page, we will enter: 
+youtube=http://www.youtube.com/v/s7ZKJU3AOo0
+

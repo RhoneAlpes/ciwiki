@@ -1,0 +1,18 @@
+CiWiki is very compact and doesn't require Mysql, php, Apache... 
+It is ideal if you wish running a small wiki on a usb flash drive.
+
+To run CiWiki from your usb drive, a few MBytes of free space are required.
+1 - Copy the folder ciwiki-2.x.x on your flash drive. 
+2 - Compile the code ./configure and make
+3 - Start CiWiki with this command:
+/media/disk/ciwiki-2.x.x/src/ciwiki -h "/media/disk/mywikispace/"
+
+Another possibility:
+ if you just want to store the wikipage on the flash drive, install ciwiki 
+normaly and start CiWiki with this command:
+ciwiki -h "/media/disk/mywikispace/"
+
+
+Note:
+The page will be stored in the folder /mywikispace of your flash drive.
+/media/disk is the path of a usb flash drive for Ubuntu.

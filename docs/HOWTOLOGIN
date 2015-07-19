@@ -1,0 +1,31 @@
+January 28, 2015
+- You need sSMTP to send emails (please read MAILINGCODE)
+- Run ciwiki with the option -s ( ciwiki -s )
+
+- The login requires the username and the password, both between 8 and 24 characters.
+Space are not allowed, any other chars are possible.
+The other fields (email,code) are only used to open an account.
+
+- A new user will have to enter its username, password and email address. These info 
+are stored in ~/newwikiusers.txt  , for example:
+U:Gladiator P:Extrem125 M:inphilly@gmail.com I:127.0.0.1 T:21151948 C:43b002e6240
+The user "Gladiator" will have to be contacted by email "yourlogin@gmail.com" with 
+these infos: username "Gladiator" password "Extrem125" and access code "43b002e6240"
+
+- The host computer (127.0.0.1) is automatically logged with the option -a ( ciWiki -a )
+
+- It's possible to have a list of unwanted ip address. Go in the folder ./ciwiki/permission 
+and create a file .unwanted.txt (don't forget the dot to hide the file else that will not work) 
+and write one line for each forbidden ip.
+
+- passwords are crypted and stored in ./ciwiki/permission/.login.txt 
+
+
+LOGIN FEATURES:
+***************
+- Pages cannot be edited or deleted if the user is not logged.
+- Page or part of the page can be hidden with the tag {{ private }}
+
+
+Note: If after 30mn a page has not been opened then the ip is canceled, and the user will 
+have to login again.

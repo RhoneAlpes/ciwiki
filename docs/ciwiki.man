@@ -1,0 +1,107 @@
+.\" ciwiki.1
+.SH NAME
+ciwiki \- simple wiki implementation with built-in webserver
+
+.SH SYNOPSIS
+.B ciwiki
+.RI [ options ]
+
+.SH DESCRIPTION
+ciwiki is aimed at those who need a quick and lightweight wiki for personal
+use, such as notes, "to do" lists, etc. It is written in C, and has
+a low system requirements (binary size of ~73k stripped with
+ ./configure CFLAGS='-s -Os'). This makes it particularly useful for
+low-power systems (Raspberry Pi).
+
+ciwiki does not require installation of a separate webserver, scripting
+language, or database.
+
+The appearance of the wiki pages may be altered by placing a
+styles.css in \fI~/.ciwiki\fR or in the directory specified using
+the \fB--home\fR option.
+
+.SH OPTIONS
+.TP
+\fB\-d\fR, \fB\--debug\fR
+Start in debug mode. In this case, ciwiki will not bind to any IP address or port: 
+it will only read the requests from standard input (stdin)
+
+.TP
+\fB\-h\fR \fIdirectory\fR, \fB\--home\fR=\fIdirectory\fR
+By default ciwiki stores its pages in \fI~/.ciwiki\fR. You can override this by
+specifying an alternative directory.
+
+.TP
+\fB\-l\fR \fIipaddr\fR, \fB\--listen\fR=\fIipaddr\fR
+By default ciwiki binds to "0.0.0.0". You can override this by specifying an alternative IP address.
+
+.TP
+\fB\-p\fR \fIport\fR, \fB\--port\fR=\fIport\fR
+By default ciwiki will listen on port \fI8000\fR. You can override this by specifying an alternative port.
+
+.TP
+\fB\-a\fR\, \fB\--autologin\fR
+The localhost is logged automaticcally.
+
+.TP
+\fB\-n\fR\, \fB\--nologin\fR
+No login, all user can modify the wiki.
+
+.TP
+\fB\-s\fR\, \fB\--sendmail\fR
+Runs notifynewuser.sh. Validation code, login and password are sent via email.
+ssmtp must be installed.
+
+.TP
+\fB\-i length\fR\, \fB\--index=length\fR
+Number of links to display in each box of the index page.
+
+.TP
+\fB\-u\fR\, \fB\--unmasked\fR
+Default: The password is masked. --unmasked allows to show it.
+
+.TP
+\fB\-v\fR\, \fB\--version\fR
+Ciwiki version number.
+
+.TP
+\fB\--help\fR
+Display the help message
+
+.LP
+To notify new users via email of their validation code, login and password,
+you need ssmpt and the script notifynewuser.sh .
+(notifynewuser.sh is included in the package and should be located in the folder 
+/usr/local/libexec .
+If you do not use the default port 8000, you will have to edit notifynewuser.sh 
+line #25 to provide the actual port #.
+
+.LP
+.SH EXAMPLES
+.TP
+\fBciwiki\fR uses syslog to log when it is launched or stopped, and when a page is accessed or modified. Here an example to list Ciwiki logs:
+.RS
+.ft 3
+.nf
+.sp
+$ grep Ciwiki /var/log/syslog
+.ft
+.LP
+.RE
+.fi
+
+In order to launch \fBciwiki\fR on a specific IP and port:
+.RS
+.ft 3
+.nf
+.sp 
+$ ciwiki \-l 127.0.0.1 \-p 8080
+.ft
+.LP
+.RE
+.fi
+
+.SH AUTHOR
+.B ciwiki
+Jean-Pierre Redonnet <mallum@o-hand.com> ,
+ciwiki is a fork of didiwiki (written by Matthew Allum)

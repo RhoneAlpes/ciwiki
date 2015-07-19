@@ -1,0 +1,36 @@
+CiWiki is a fork of DidiWiki 
+Please, don't forget to read file in the folder docs
+JP Redonnet. 
+
+CiWiki README
+==============
+
+CiWiki is a small and simple WikiWikiWeb implementation written in
+C. It's intended for personal use for notes, Todo lists, etc. It includes
+its' own webserver and hopefully its as simple as just compiling, running
+and pointing your browser at it. 
+
+Installation
+============
+
+To build do the usual:
+./configure
+make
+sudo make install
+
+Then type: ciwiki -a -s
+
+On startup it'll tell you the address to point your browser at. 
+You should then be ready to go. 
+
+To notify new users via email of their validation code, login and password,
+you need ssmpt and the script notifynewuser.sh .
+notifynewuser.sh is located in the folder /usr/local/libexec
+(sudo make install should copy this script on the right place).
+If you install this script in another place, you will have to edit 
+the line #89 in ciwiki-2.x.x/src/ci.h
+#define SCRIPTMAIL "/usr/local/libexec/notifynewuser.sh>/dev/null 2>&1 &" 
+#define SCRIPTMAIL "/new place/notifynewuser.sh>/dev/null 2>&1 &" 
+
+If you do not use the default port 8000, you will have to edit notifynewuser.sh 
+line #25 to provide the actual port #.

@@ -1,0 +1,7 @@
+Version 1.7 and above:
+You can store images in the folder ~/.ciwiki/images and compressed files in the folder ~/.ciwiki/files.
+The image formats accepted are .png, .jpg, .jpeg, .gif .pdf , and the compressed formats accepted are .zip, .gz, .bz2, .tar .
+To display an image in the wiki page, add this line: [images/YourPhoto.png]
+To add a link to a file, add this line: [files/YourFile.zip]
+
+(The page WikiHome contains an example of links above)

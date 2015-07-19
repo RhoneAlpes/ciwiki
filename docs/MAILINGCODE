@@ -1,0 +1,27 @@
+AUTOMATIC MAILING OF THE ACCESS CODE
+
+January 28, 2015:
+-----------------
+
+If the registration mail is not sent:
+- Check is ssmtp is installed. (whereis ssmtp)
+- ssmtp.conf is correctly configured? (sudo gedit /etc/ssmtp/ssmtp.conf for example)
+- revaliases is correctly configured? (sudo gedit /etc/ssmtp/revaliases for example)
+- Check log files: cat /var/log/mail.err  cat /var/log/mail.log cat /var/log/mail.warn  cat /var/log/mail.info
+
+ssmtp configuration , example of configuration for gmail:
+---------------------------------------------------------
+1 -  /etc/ssmtp/ssmtp.conf 
+
+mailhub=smtp.gmail.com:587
+UseSTARTTLS=YES
+FromLineOverride=YES
+AuthUser=yourlogin@gmail.com
+AuthPass=yourpassword
+
+2 - /etc/ssmtp/revaliases
+
+root:yourlogin@gmail.com:smtp.gmail.com:587
+localusername:yourlogin@gmail.com:smtp.gmail.com:587
+
+

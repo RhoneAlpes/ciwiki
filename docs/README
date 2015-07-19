@@ -1,0 +1,5 @@
+1 - Please read ChangeLog (in ciwiki-2.x.x folder)
+2 - If you upgrade CiWiki from a previous version ( < 2.0.0 ) : 
+- Please copy the files from the folder.didiwiki to the folder .ciwiki/  ( cp .didiwiki/* .ciwiki )
+and copy the file .login.txt from the folder .didiwiki/permission to the folder .ciwiki/permission
+( cp .didiwiki/permission/.login.txt .ciwiki/permission )

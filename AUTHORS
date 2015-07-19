@@ -1,0 +1,47 @@
+CiWiki alias DidiWiki
+---------------------
+Fork of DidiWiki 0.8
+	Jean-Pierre Redonnet <inphilly@gmail.com>
+		new features:
+			text color and background color
+			image size and border
+			embedded videos
+			previous page saved
+			login and page permission
+			quote
+			expand/collapse
+      			table of contents
+      			diff with previous page
+
+DidiWiki
+--------
+Primary developer: 
+	Matthew Allum <mallum@o-hand.com>
+
+Contributors:
+	Carsten Graeser <c.g.berlin@web.de> - table support. 
+	
+	Peter Korsgaard <jacmet@sunsite.dk>
+		various patches:
+		autogen-fixup, cleanup-svn, fix-rss-changes
+		new features:
+		edit-preview-cancel, delete-page
+	
+	Kanru Chen  <Jabber: kanru@jabber.org> - page index support
+	
+	Gilbert Ashley <amigo@ibiblio.org>
+		Pulled together last upstream sources from svn,
+		adding patches from Peter Korsgaard, Kanru Chen
+		and from debian-0.5-5 patch. Fixed up, refactored
+		and re-diffed the above to all work together.
+		Added later fixes and features patches from debian
+		and then started fixing remaining issues.
+		
+Debian maintainers and/or patch authors:
+	Ignace Mouzannar <mouzannar@gmail.com>
+	Mauro Lizaur <mauro@cacavoladora.org>
+	Peter Eisentraut <petere@debian.org>
+	Hanna Wallach <hmw26@cam.ac.uk>
+	Carlo Mandelli <camandel@gmail.com>
+	Alexey Khudyakov <alexey.skladnoy@gmail.com>
+	Neil Stockbridge <neil@dist.ro>

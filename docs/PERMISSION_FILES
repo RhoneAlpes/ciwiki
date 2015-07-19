@@ -1,0 +1,29 @@
+Permission files are located in the folder /.ciwiki/permission
+
+The file '.login.txt' contains the registered users:
+NAME     ENCRYPTED PASSWORD INET Adr    DATE   FLAGS
+newroanne 000b53add24d1e41  127.0.0.1 21248396 1 1
+
+The file '.session.txt' contains the users curently logged:
+-----INET ADR AUTHORIZED--------:---LOGIN DATE---:--------USER NAME-------
+                       127.0.0.1:        21365194:                inphilly
+
+'.login.txt' and '.session.txt' are automatically created and they should not 
+be manually modified or deleted. '.session.txt' is automatically deleted when 
+the program CiWiki is closed and it's created when the first user login.
+
+The file '.alwayswanted.txt' contains a list of inet address that are 
+automatically logged on without user intervention. Write one address per 
+line terminated with a EOL (key Enter):
+
+192.168.1.64
+192.168.1.65
+
+
+The file '.unwanted.txt' contains a list of inet address to reject. Users 
+with these address will not able to login. Write one address per 
+line terminated with a EOL (key Enter):
+
+192.168.1.10
+192.168.1.15
+

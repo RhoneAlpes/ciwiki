@@ -1,0 +1,499 @@
+2015-07-17    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * Added templates (up to 5 templates are possible)
+    1st: Create a template with this name: 01.template in 'Create New Page'
+    2nd: Enter the name of the page and select the template in 'Create New Page'
+    (Five template names are possible: 01.template,02.template,03.template,04.template,05.template)
+  * Added image floating, examples:
+    {{left}} or {{width=200 height=300 border= 2 right}}
+    {{default}} to reset
+  * Added: {{upload}} to upload file into the server.
+    * pic,jpeg,gif,png stored in .ciwiki/images
+    * htm,html stored in .ciwiki/html
+    * txt,doc,pdf,xls,zip stored in .ciwiki/files
+  * Changed: Index has link to the images and files folders
+  * Updated: WikiHelp
+  * configure.ac updated to 2.0.4
+  
+2015-02-20    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * notifynewuser.sh argument -p #port (ciwiki provides the argument -p to run this script)
+  * file ~/messagenewuser.txt allows to customize the email sent to the new users.
+  * check_public_ip.sh looks for the public ip address (thru the website iconfig.me/ip)
+  * https link are accepted
+  * uppercase GIF,JPG,JPEG,PNG are accepted.
+  * able to serve html pages stored in ~/.ciwiki/html/
+  * html=.... creates a link to a html page stored in ~/.ciwiki/html/ 
+  * startup option -t or --html (ciwiki -t or ciwiki --html), then WikiHome redirects to /html/index.html
+  * configure.ac updated to 2.0.3
+
+2015-02-10    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * {wwwlink=new_tag}} and {{wwwlink=current_tag}} are renamed {wwwlink=new_tab}} and {{wwwlink=current_tab}}
+  * New tag {{schedule=date;text if true;text if false}}
+  * Makefile added in /scripts (to install notifynewuser.sh in /usr/local/libexec)
+  * Makefile added in /docs (to install ciwiki.man)
+  * notifynewuser.sh changed to accept inet addr: and inet adr:
+  * configure.ac updated to 2.0.2
+
+2015-01-28    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * bug in configure.ac is fixed. 
+  * configure.ac updated to 2.0.1
+  * documentation is updated.
+
+2015-01-23    Jean-Pierre Redonnet <inphilly@gmail.com>
+  it's easier to build binary package. But several changes were required:
+  * binary is renamed ciwiki
+  * working folder is renamed ./ciwiki
+  * script finish_install is not required anymore
+   Configure.ac updated to 2.0.0
+
+============================================================================
+WARNING! 
+ciwiki >= 2.0.0 are not strictly compatible with the previous versions:
+ - executable file didiwiki is renamed ciwiki
+ - working folder has changed for ./ciwiki
+ - notifynewuser.sh has moved to /usr/local/libexec (ciwiki >= 2.0.2)
+============================================================================
+
+2014-12-06    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * password field for login is masked (default setting)
+  * masked/unmasked password with the option -u
+        For example: didiwiki -u
+  * pack renamed 1.7.6
+
+2014-09-05    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * ERR_CONTENT_LENGTH_MISMATCH bug is fixed
+  * Configure.ac updated to 1.7.5
+  * pack renamed 1.7.5
+
+2014-09-04    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * vulnerability bug is fixed. Thanks to Alexander Izmailov and its patch.
+  * CiWiki 1.7.3 didn't compile on FreeBSD 9.0-RELEASE. Thanks to Danyil Bohdan and its bug fix.
+  * Configure.ac updated to 1.7.4
+  * pack renamed 1.7.4
+
+2013-10-31    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * Password bug is fixed. 
+      (!!! There is a new hash function so the previous passwords will not work.
+       Users will have to create a new account.)
+  * Insecure behaviour of 'Changes' + {{private}} is fixed.
+       Now Changes requires to be 'logged in' to prevent the possibility
+       to show private data after the tag {{private}}.
+  * 'you are logged in' is displayed.
+  * Change password routine fixed.
+  * notifynewuser.sh (issue when wlan0) fixed
+  * Configure.ac updated to 1.7.3
+  * pack renamed 1.7.3
+
+2013-10-26    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * Added: Expandable/collapsible index list
+	Default value is 20 lines per box
+	can be changed with the option -i <length> 
+        For example: didiwiki -i 10  'sets 10 lines per box'
+  * Configure.ac updated to 1.7.2
+  * pack renamed 1.7.2
+  
+2010-08-09    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * Fixed finish_install.sh  The folder /.didiwiki is created if it doesn't exist.
+  * pack renamed 1.7.0.1
+  
+2010-08-08    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * Added: send an images (.png,.gif,.jpg,.jpeg,.pdf) stored in the .didiwiki folder.
+  * Added: can send compressed files (.zip,.tar,.lzma,.bz2,.gz) stored in the .didiwiki folder.
+  * Changed: login.txt file has moved in .didiwiki/permission
+  * Changed: finish_install.sh copies the css, sh and png files,
+            and moves login.txt in .didiwiki/permission
+  * Changed: code hs been a little bit reorganized to make it clearer (i hope).
+  * Fixed: bug when autostarted with option -a
+  * Fixed: notifynewuser.sh uses inet address for the direct link
+  * Configure.ac updated to 1.7.0
+
+2010-06-20    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * Added: For Change command; Diff returns differences between the current 
+      and the previous page; Comp returns the previous page but differences
+      are marked.
+  * Added: Tiny help above the edit screen.
+  * Added: Backquote around a keyword,for ex. `print`
+  * Fixed: Bug when file name in 2 words; now spaces are replaced with 
+      underline char.
+  * configure.ac updated to 1.6.0
+
+2010-05-24    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * Added: Direct validation of a new registration (link in the email), the user 
+	will not have to reenter his username, password, email and the access code.
+  * configure.ac updated version to 1.5.2
+
+2010-05-24    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * Added: Option -a (localhost is logged in automatically)
+  * Added: Option -s (send email afer each new registration, cron is not 
+  needed. 'notifynewuser.sh' must be copied in ~/scripts/).
+  * configure.ac updated version to 1.5.1
+
+2010-05-20    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * Added: logoff and change password page.
+  * Modified login and new account page.
+  * Fixed: bugs with login procedure.
+  * Added: Error msg 'permission denied'
+  * Added: automatic access code script and other minor scripts.
+  * configure.ac updated version to 1.5
+
+2010-05-12   Jean-Pierre Redonnet <inphilly@gmail.com>
+  * Added: A todo list where {{entry}} {{data#}} {{save}}  {{delete}} 
+  will create a form. Entries are saved inside the wiki page.
+  * Added: {{toc}} a table of contents.
+  * Fixed: bugs with {{expand}} and {{collapse}}
+  * configure.ac updated version to 1.4
+
+2010-05-08   Jean-Pierre Redonnet <inphilly@gmail.com>
+  * Bug fix: multiple and imbriqued {{expand}} are possible.
+  {{-expand}}
+  text, pictures, links
+  {{-expand}}  //Bugs: please, no space between -expand and the brackets!
+  * Added: {{collapse}} and {{-collapse}}
+  {{collapse}}
+  text, pictures, links
+  {{-collapse}}
+  * Added: {{wwwlink=new_tag}} and {{wwwlink=current_tag}} 
+  to open external link in a new tag or in the current tag.
+  * configure.ac updated version to 1.3.1
+
+2010-05-07   Jean-Pierre Redonnet <inphilly@gmail.com>
+  * Option -restore rewrite WikiHelp
+	* Quote added:
+  'This is a quote
+  * Expand/collapse added:  
+  {{expand}}
+  text, pictures, links
+  {{-expand}}
+  * configure.ac updated version to 1.3
+  !!! Note:
+  Styles of quote and expand are set in styles.css.
+  styles.css must be copied in ./didiwiki or the homedir of didiwiki,
+  and didiwiki program restarted.
+
+2010-03-21  Jean-Pierre Redonnet <inphilly@gmail.com>
+	* Basic login procedure added (permission to edit/delete page)
+	* New tag: {{ private }} 
+	Text after this tag is hidden if not logged.
+	* Please read HOWLOGIN for more.
+	* configure.ac updated version to 1.2
+
+2010-03-12  Jean-Pierre Redonnet <inphilly@gmail.com>
+	* didiwiki renamed ciwiki alias didiwiki 
+	(program, directory keep the name didiwiki)
+	Possibility to undo page change.
+	* configure.ac updated version to 1.1
+
+2010-03-10  Jean-Pierre Redonnet <inphilly@gmail.com>
+	* didiwiki renamed didiwiki2
+	Few new markups (non-standards but compacts)
+	Added image and border resize, example:
+	{{ width=200 height=300 border= 2 }}
+	* configure.ac updated version to 1.0
+
+2010-03-07  Jean-Pierre Redonnet <inphilly@gmail.com>
+	* didiwiki renamed didiwiki2
+	Few new markups (non-standards but compacts)
+	Added text color, highlight color, example:
+	text color:{B} highlight:+text+ and color:(Y) 
+	* configure.ac updated version to 0.9
+
+2009-09-30  Gilbert Ashley <amigo@ibiblio.org>
+
+	* src/wiki.c
+	* src/wikitext.h
+	  Fixed edit/delete functionality so that the links point to the
+	  current page and not always the main WikiHome. This meant separating
+	  EDITHEADER and PAGEHEADER into two independent headers.
+	* Added a man-page -taken from debian and slightly altered
+	* Added styles.css page -also taken from debian
+	* Added logo and toolbar png images taken from didiwiki website
+	* Added example didiwiki.conf
+	* Added didiwiki.1, styles.css, didiwiki-16.png, didiwiki.png,
+	  didiwiki.conf and didiwiki.html to top-level Makefile.am
+	* Added notes about changes applied from debian patches to the
+	  previous ChangeLog entry.
+	* Made small changes to the README file.
+	* Added names of all contributors to AUTHORS
+	* Added comments to the NEWS file.
+	* Edited the didiwiki.html file to remove out-dated information.
+	* configure.ac updated version to 0.8
+	* ran 'autoreconf -i' to generate new configuration files
+	* Repackaged as didiwki-0.8.tar.bz2
+	
+2009-09-29  Gilbert Ashley <amigo@ibiblio.org>
+
+	* Based on didiwiki-0.6-svn sources:
+	* Applied fixup patches from Peter Korsgaard <jacmet@sunsite.dk>:
+	  autogen-fixup, cleanup-svn, fix-rss-changes
+	* Applied fixup and feature patch from debian didiwiki-0.5-5
+	  - add command-line options for debugging, for setting 'wikihome'
+	    and for setting the port to use.
+	  - Spelling fixes.
+	* Applied feature patches from Peter Korsgaard <jacmet@sunsite.dk>:
+	  edit-preview-cancel, delete-page
+	* Applied feature patch from  Kanru Chen  <Jabber: kanru@jabber.org>:
+	  page-index support
+	* Applied fixes debian patches from didiwiki-0.5-8
+	  - Fix unicode chars on page names (Alexey Khudyakov <alexey.skladnoy@gmail.com>)
+	  - Remove the double newlines in preformatted text (Neil Stockbridge <neil@dist.ro>)
+	  - Spelling fixes
+	  - Add access log using syslog (Carlo Mandelli <camandel@gmail.com>)
+	  - Implementation of the -l|--listen option that lets you bind to a 
+	    address other than the default "0.0.0.0" (Carlo Mandelli <camandel@gmail.com>)
+	  - Usage() function implementation (Ignace Mouzannar <mouzannar@gmail.com>)
+	  - Implementation of a SIGINT handler in order to stop didiwiki cleanly (Ignace Mouzannar <mouzannar@gmail.com>)
+	  - Some minor fixes were written or applied by these debian didiwiki package maintainers:
+	    Carlo Mandelli <camandel@gmail.com>
+		Ignace Mouzannar <mouzannar@gmail.com>
+		Mauro Lizaur <mauro@cacavoladora.org>
+		Peter Eisentraut <petere@debian.org>
+		Hanna Wallach <hmw26@cam.ac.uk>
+	* re-factored and re-diffed the above with necessary changes
+	* removed website and svn files from sources
+	* configure.ac:
+	  updated version to 0.7
+
+2004-12-12  mallum,,,  <mallum@openedhand.com>
+
+	* website/index.htm:
+	Fix SVN info
+
+2004-12-12  mallum  <mallum@openedhand.com>
+
+	* website/index.htm:
+	Add Openedhand Link
+
+2004-11-14  mallum  <mallum@handhelds.org>
+
+	* src/http.c: (http_server):
+	* src/wiki.c: (wiki_show_changes_page_rss),
+	(wiki_handle_http_request):
+	Improve RSS feed ( add full links tidy up )
+
+2004-11-14  mallum,,,  <mallum@handhelds.org>
+
+	* src/http.c: (http_response_send):
+	* src/wiki.c: (check_for_link), (file_write),
+	(wiki_show_search_results_page), (wiki_show_template),
+	(wiki_show_header):
+	* src/wikitext.h:
+	Dont send '\0' in http response. Dont write '\0' to disk.
+	Make all links relative, not absolute ( for reverse proxys )
+	Add initial RSS changes page ( thanks to <j.theess@tu-bs.de> )
+
+2004-09-30 0.5 released. 
+
+2004-09-30  mallum,,,  <mallum@handhelds.org>
+
+	* configure.ac:
+	Bump up version,
+	* src/wiki.c: (wiki_print_data_as_html), (wiki_get_pages),
+	(wiki_handle_http_request):
+	Fix italic brokeness. Add check for extra /'s in req path. 
+	* website/index.htm
+	Update for 0.5 release. 
+
+2004-09-28  mallum,,,  <mallum@handhelds.org>
+
+	* README:
+	Added notes on HTTP API. Made forking/memory thing a bit clearer.
+	* TODO:
+	Updated.
+	* configure.ac:
+	* src/Makefile.am:
+	Add missing -Wall
+	* src/didi.h:
+	* src/http.c: (http_server):
+	* src/wiki.c: (check_for_link), (wiki_print_data_as_html),
+	(wiki_show_create_page), (changes_compar),
+	(wiki_show_changes_page), (wiki_show_search_results_page),
+	(wiki_show_template), (wiki_show_header), (wiki_show_footer),
+	(wiki_handle_rest_call), (wiki_handle_http_request), (wiki_init):
+	* src/wiki.h:
+	Added simple http api. 
+	Rewrote searchs / changes stuff so more generic
+	Applied patches from Tiago Cogumbreiro for more printf safety etc.
+	Fixed -Wall warnings.	
+	* website/index.htm:
+	Updated with hopeful amamzon wish list link. 
+
+2004-09-13 0.4 released. 
+
+2004-09-13  mallum  <mallum@handhelds.org>
+
+	* README:
+	* configure.ac:
+	Bump up versions
+	* website/index.htm:
+	* website/styles.css:
+	bring in to 21st century. 
+
+2004-09-10  mallum,,,  <mallum@handhelds.org>
+
+	* configure.ac:
+	Add message about upgrades and wikihelp
+	* src/wiki.c: (check_for_link), (wiki_show_header),
+	(wiki_handle_http_request):
+	Add title attr for external www links
+	Add favicon.ico
+	* src/wikitext.h:
+	Update help for ordered lists. Add favicon data. 
+
+2004-09-10  mallum,  <mallum@handhelds.org>
+
+	* Makefile.am:
+	* TODO:
+	Add TODO. 
+
+2004-09-09  mallum,  <mallum@handhelds.org>
+
+	* src/wiki.c: (check_for_link), (wiki_print_data_as_html):
+	Dont let %'s in links end up as printf formatters. fixes seg.	
+	* src/wikitext.h:
+	Add little javascript to edit page to autofocus textentry. 
+	Possibly evil. 
+
+2004-09-08  mallum,,,  <mallum@handhelds.org>
+
+	* src/wiki.c: (check_for_link):
+	Only let alphanums be valid in camel case links 
+	( via Eric Newman )
+	* src/wikitext.h:
+	Fix missing ' in anchor tag
+
+2004-09-02  mallum,,,  <mallum@handhelds.org>
+
+	* src/wiki.c: (wiki_handle_http_request):
+	Remove any http encoding of requested page name, 
+        thanks again to Kanru Chen.
+
+2004-09-02  mallum,,,  <mallum@handhelds.org>
+
+	* src/http.c: (http_response_send_headers):
+	Send correct UTF8 type, thanks Kanru Chen.
+	* src/wiki.c: (check_for_link), (wiki_print_data_as_html):
+	Add support for file:// urls. Add Support for ordered lists.
+
+2004-08-17  0.3 release. 
+
+2004-08-17  mallum  <mallum@handhelds.org>
+
+	* README:
+	* configure.ac:
+	Bump up version to 0.3
+
+	* src/wikitext.h:
+	More CSS tweakery
+	* website/index.htm:
+	Update for 0.3 release 
+
+2004-08-10  mallum,,,  <mallum@handhelds.org>
+
+	* src/wiki.c: (wiki_show_header):
+	* src/wikitext.h:
+	Add titles and shortcut keys to hrefs
+
+2004-08-08  mallum,,,  <mallum@handhelds.org>
+
+	* src/http.c: (http_response_new), (http_response_send_headers):
+	* src/http.h:
+	All content type in response to be set. 
+	* src/wiki.c: (wiki_show_changes_page),
+	(wiki_show_search_results_page), (wiki_show_header),
+	(wiki_handle_http_request):
+	* src/wikitext.h:
+	Fix styles.css to have corect content type.
+	More web standard related fixes. Now xhtml transitional.
+
+2004-08-06  mallum,,,  <mallum@handhelds.org>
+
+	* src/wiki.c: (wiki_print_data_as_html), (wiki_show_header):
+	* src/wikitext.h:
+	CSS + HTML cleanups/improvements
+
+2004-08-02  mallum,,,  <mallum@handhelds.org>
+
+	* src/wiki.c: (wiki_print_data_as_html):
+	Attempt to detect path names and not make them italic 
+
+2004-08-02  mallum,,,  <mallum@handhelds.org>
+
+	* src/wiki.c: (file_write), (wiki_print_data_as_html):
+	More improvements to bold/italic/underline etc handling
+
+2004-07-30  mallum,,,  <mallum@handhelds.org>
+
+	* README:
+	update
+	* src/wiki.c: (wiki_print_data_as_html), (wiki_init):
+	honor DIDIWIKIHOME env var. Improve */-_ handling.
+	* src/wikitext.h:
+	Escape %%'s
+	* website/index.htm:
+	Update for 0.2 release
+
+2004-07-30  0.2 Release
+
+2004-07-29  mallum,,,  <mallum@handhelds.org>
+
+	* AUTHORS:
+	Populated
+	* src/wiki.c: (wiki_print_data_as_html):
+	* src/wikitext.h:
+	Basic Table support. Help updates. pre fixes
+
+2004-07-29  mallum,,,  <mallum@handhelds.org>
+
+	* configure.ac:
+	Bump up version
+	* src/didi.c: (main):
+	* src/didi.h:
+	* src/http.c: (malformed_request):
+	* src/util.c: (util_ascii_to_hex), (util_dehttpize),
+	(util_htmlize):
+	* src/util.h:
+	* src/wiki.c: (check_for_link), (file_read),
+	(wiki_print_data_as_html), (wiki_init):
+	Quick source cleanup. 
+	Make sure lingering </pre>'s get closed
+
+2004-07-28  mallum,,,  <mallum@handhelds.org>
+
+	* src/http.c: (http_server):
+	reuse socket address 
+	* src/wiki.c: (wiki_print_data_as_html):
+	Dont stick <p>'s in <pre>'s
+
+2004-07-20  0.1 Release. 
+
+2004-07-20  mallum,,,  <mallum@handhelds.org>
+
+	* README:
+	* src/wikitext.h:
+	* website/index.htm:
+	More updates to wikitext.h , stylesheets etc.  
+	Added website stuff to svn. 
+	A bit more info in the README.
+
+2004-07-20  mallum,,,  <mallum@handhelds.org>
+
+	* src/didi.h:
+	* src/http.c:
+	* src/util.c:
+	* src/wiki.c: (wiki_print_data_as_html), (changes_compar),
+	(wiki_show_changes_page), (wiki_show_search_results_page),
+	(wiki_show_header):
+	* src/wikitext.h:
+	Add license to source files. 
+	More predefined Wiki Text. 
+
+2004-07-19  mallum  <mallum@handhelds.org>
+
+	* src/http.c: (http_server):
+	* src/wiki.c: (wiki_print_data_as_html), (wiki_show_changes_page),
+	(wiki_show_search_results_page), (wiki_show_header),
+	(wiki_show_footer), (wiki_handle_http_request), (wiki_init):
+	* src/wikitext.h:
+	Added simple search functionality. 
+	Messed with some header defines
+	Imporved webserver startup
+

@@ -1,0 +1,17 @@
+To create your little Wiki server you need to know your ip adress.
+
+In the console, type ifconfig eth0 and record the inet adr.
+
+For instance:
+
+jp@jp-laptop:~$ ifconfig
+eth0      Link encap:Ethernet  HWaddr 00:c0:9e:1c:77:31  
+          inet adr:191.149.1.58   ...
+
+So my inet adress is: 191.149.1.58
+
+If ciwiki runs in default mode, the port is 8000 
+(use "ciwiki --port xxxx" to change it) and the adress the users will 
+have to enter in their browser is 191.149.1.58:8000
+
+
