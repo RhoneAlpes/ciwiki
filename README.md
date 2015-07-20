@@ -1,5 +1,5 @@
 # ciwiki
-This is the original lightweight wiki for personal notes and collaborative wiki
+This is the original lightweight wiki for personal notes and collaborative wiki.
 It's a fork of didiwiki. I started on 2010, adding more functionalities such as:
 
 - Text and highlight colors
