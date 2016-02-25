@@ -367,12 +367,15 @@ http_request_new(void)
     malformed_request(3, token); //token not accepted
 
   putenv("GATEWAY_INTERFACE=CGI/1.0");
-  putenv(util_mprintf("REQUEST_METHOD=%s",token));
+  
+  //putenv(util_mprintf("REQUEST_METHOD=%s",token));
+  setenv("REQUEST_METHOD",token,1);
 
   if ((token = util_extract_token(z, &z)) == NULL)
     malformed_request(4, z); //no uri
 
-  putenv(util_mprintf("REQUEST_URI=%s", token));
+  //putenv(util_mprintf("REQUEST_URI=%s", token));
+  setenv("REQUEST_URI",token,1);
 
   if (token)
     req->uri = strdup(token);
@@ -383,18 +386,21 @@ http_request_new(void)
 
   if( token[i] ) token[i++] = 0;
 
-  putenv(util_mprintf("PATH_INFO=%s", token));
+  //putenv(util_mprintf("PATH_INFO=%s", token));
+  setenv("PATH_INFO",token,1);
 
   if (token)
     req->path_info = strdup(token);
 
-  putenv(util_mprintf("QUERY_STRING=%s", &token[i]));
+  //putenv(util_mprintf("QUERY_STRING=%s", &token[i]));
+  setenv("QUERY_STRING",&token[i],1);
 
   if (&token[i])
     req->query_string = strdup(&token[i]);
 
   if( getpeername(fileno(stdin), (struct sockaddr*)&remoteName, &size) >=0 ) {
-    putenv(util_mprintf("REMOTE_ADDR=%s", inet_ntoa(remoteName.sin_addr)));
+    //putenv(util_mprintf("REMOTE_ADDR=%s", inet_ntoa(remoteName.sin_addr)));
+    setenv("REMOTE_ADDR",inet_ntoa(remoteName.sin_addr),1);
 	req->ip_src = inet_ntoa(remoteName.sin_addr);
   }
 
@@ -420,39 +426,46 @@ http_request_new(void)
 
     if(!strcmp(key,"user-agent:")) 
     {
-      putenv(util_mprintf("HTTP_USER_AGENT=%s", val));
+      //putenv(util_mprintf("HTTP_USER_AGENT=%s", val));
+      setenv("HTTP_USER_AGENT",val,1);
     } 
     else if (!strcmp(key,"content-length:"))
     {
-      putenv(util_mprintf("CONTENT_LENGTH=%s", val));
+      //putenv(util_mprintf("CONTENT_LENGTH=%s", val));
+      setenv("CONTENT_LENGTH",val,1);
     }
     else if (!strcmp(key,"referer:"))
     {
-      putenv(util_mprintf("HTTP_REFERER=%s", val));
+      //putenv(util_mprintf("HTTP_REFERER=%s", val));
+      setenv("HTTP_REFERER",val,1);
     } 
     else if (!strcmp(key,"host:"))
     {
-      putenv(util_mprintf("HTTP_HOST=%s", val));
+      //putenv(util_mprintf("HTTP_HOST=%s", val));
+      setenv("HTTP_HOST",val,1);
     }
     else if (!strcmp(key,"content-type:"))
     {
-      putenv(util_mprintf("CONTENT_TYPE=%s", val));
+      //putenv(util_mprintf("CONTENT_TYPE=%s", val));
+      setenv("CONTENT_TYPE",val,1);
     }
     else if (!strcmp(key,"cookie:"))
     {
-      putenv(util_mprintf("HTTP_COOKIE=%s", val));
+      //putenv(util_mprintf("HTTP_COOKIE=%s", val));
+      setenv("HTTP_COOKIE",val,1);
     }
     else if (!strcmp(key,"action:"))
     {
-      putenv(util_mprintf("ACTION=%s", val));
+      //putenv(util_mprintf("ACTION=%s", val));
+      setenv("ACTION",val,1);
     }
-    
+
   }
 
   /* Parse and store QUERY_STRING/POST/Cookie data in req object */
 
   if (getenv("QUERY_STRING"))
-    http_request_parse_params (req, strdup((getenv("QUERY_STRING"))), '&'); 
+    http_request_parse_params (req, strdup((getenv("QUERY_STRING"))), '&');
 
   /* POST type data */
 

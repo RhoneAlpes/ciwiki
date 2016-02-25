@@ -239,10 +239,9 @@ wiki_get_pages(int  *n_pages, char *expr)
   struct passwd  *pwd;
   struct group   *grp;
 
-
   n = scandir(".", &namelist, 0, (void *)changes_compar);
-  
-  pages = malloc(sizeof(WikiPageList*)*n);
+ 
+  pages = malloc((sizeof(WikiPageList*)+1)*n);
 
   while(n--) 
   {
@@ -270,11 +269,18 @@ wiki_get_pages(int  *n_pages, char *expr)
       pwd=getpwuid(st.st_uid);
       grp=getgrgid(st.st_gid);
         
-      pages[i]        = malloc(sizeof(WikiPageList));
+      pages[i]        = malloc(sizeof(WikiPageList)+1);
       pages[i]->name  = strdup(namelist[n]->d_name);
       pages[i]->mtime = st.st_mtime;
-      pages[i]->user_name =  strdup(pwd->pw_name);
-      pages[i]->grp_name =  strdup(grp->gr_name);
+      if (pwd)
+        pages[i]->user_name =  strdup(pwd->pw_name);
+      else
+        pages[i]->user_name =  strdup("ERR pwd");
+      if (grp)
+        pages[i]->grp_name =  strdup(grp->gr_name);
+      else
+        pages[i]->grp_name =  strdup("ERR grp");
+
       i++;
     }
 
@@ -285,7 +291,7 @@ wiki_get_pages(int  *n_pages, char *expr)
   *n_pages = i;
 
   free(namelist);
-
+ 
   if (i==0) return NULL;
 
   return pages;
@@ -430,18 +436,21 @@ wiki_show_search_results_page(HttpResponse *res, char *expr)
     exit(0);
   }
 
+  /* search for exp in the wiki */
   pages = wiki_get_pages(&n_pages, expr);
-  
+ 
   /* if only one page is found, redirect to it */
   if (n_pages == 1) 
     wiki_redirect(res, pages[0]->name);
   
   if (pages)
-    {
+  {
+    /* redirect on page name match */
     for (i=0; i<n_pages; i++)
-      if (!strcmp(pages[i]->name, expr)) /* redirect on page name match */
+      if (!strcmp(pages[i]->name, expr)) 
         wiki_redirect(res, pages[i]->name);
 
+    /* list pages containing <<expr>> */
     wiki_show_header(res, "Search", FALSE, 0);
 
     for (i=0; i<n_pages; i++)
@@ -704,7 +713,7 @@ wiki_handle_http_request(HttpRequest *req)
   {
     /*  Return favicon */
     http_response_set_content_type(res, "image/ico");
-    http_response_set_data(res, FaviconData, FaviconDataLen);
+    http_response_set_data(res, FaviconData, FaviconDataLen); 
     http_response_send(res);
     exit(0);
   }
@@ -1414,6 +1423,35 @@ wiki_init(char *ciwiki_home, unsigned restore_Wiki, unsigned create_htmlHome)
     else
 	  fprintf(stderr, "Unable to create '%s'\n",PICSFOLDER"/ciwiki.png");
   }
+  
+  /* if favicon.ico file exist then load it 
+   else use the default favicon stored at the end of wikitext.h */
+  if ( access(".favicon.ico", R_OK ) == 0) 
+  {
+    FILE*       fp;
+    int         len;
+
+    if ( (fp = fopen(".favicon.ico", "rb")) )
+    {
+      /* get file size */
+      fseek (fp , 0 , SEEK_END);
+      if ( ftell(fp) < FAVICONDATAMAX )
+      { 
+        rewind (fp);      
+        len = fread(FaviconData, 1,FAVICONDATAMAX, fp);
+        if (len >= 0) FaviconData[len] = '\0';
+        FaviconDataLen=len;
+        fprintf(stderr,"Favicon file is loaded %i bytes\n",len);
+      }
+      else
+        fprintf(stderr,"Favicon file is too large!\n");
+      fclose(fp);
+    }
+    else
+      fprintf(stderr,"Favicon file cannot open!\n");
+  }	
+  else
+    fprintf(stderr,"Use internal ciwki favicon.\n");
     
   /* Delete previous permission list */
   remove(ACCESSFOLDER"/.session.txt");
