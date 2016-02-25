@@ -1,0 +1,20 @@
+Febuary 20, 2016
+
+Ciwiki has is own favicon stored inside the code but it's possible to override it.
+At the startup, it will load the favicon file named .favicon.ico located in the folder .ciwiki
+(this folder is hidden, check Show hidden files in your files browser).
+
+The favicon file must have the name .favicon.ico and must be hidden (dot before the file name).
+The file must be in the folder .ciwiki and the file can't exceed 1024 bits.
+
+If .favicon.ico doesn't exist or cannot be read or is larger than 1024 bytes, the default favicon is used.
+
+The favicon is loaded during the startup of ciwiki. If you change the .favicon.ico file, you will have to stop 
+and restart ciwiki.
+
+Firefox need to be stopped and restarted to load the new favicon (I didn't test the other web browser).
+
+You can create your favicon online with http://www.favicon.cc/ , it's very easy and 
+your favicon can be animated. Dont forget, ciwiki will not load favicon larger than 1024 bytes.
+
+Note: Example of favicon.ico is available in /docs; copy it in /.ciwiki and rename it .favicon.ico
