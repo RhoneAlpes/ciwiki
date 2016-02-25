@@ -1,5 +1,5 @@
 AC_PREREQ(2.59)
-AC_INIT(ciwiki, 2.0.4, [inphilly@gmail.com])
+AC_INIT(ciwiki, 2.0.5, [inphilly@gmail.com])
 AC_CONFIG_SRCDIR([src/util.c])
 AM_CONFIG_HEADER(config.h)
 

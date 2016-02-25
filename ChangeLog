@@ -1,3 +1,7 @@
+2016-02-20    Jean-Pierre Redonnet <inphilly@gmail.com>
+  * Added: favicon.ico file can be loaded at startup. (instruction in /docs/FAVICON)
+  * configure.ac updated to 2.0.5
+    
 2015-07-17    Jean-Pierre Redonnet <inphilly@gmail.com>
   * Added templates (up to 5 templates are possible)
     1st: Create a template with this name: 01.template in 'Create New Page'
