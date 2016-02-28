@@ -358,9 +358,17 @@
 " Pictures size and border: {{width=100 height=50 border=2}}\n"          \
 " Return to the default width, height and border: {{picture=default}}\n"  \
 "\n"                                                                     \
+"Some text before\n"                                                     \
 "{{width=100 height=50 border=1}}\n"                                     \
 "http://www.google.com/images/logo.gif\n"                                \
-" http://www.google.com/images/logo.gif\n"                               \
+"Some text after\n"                                                      \
+" {{width=100 height=50 border=1 right}}                              \n"\
+"{{width=100 height=50 border=1 right}} http://www.google.com/images/logo.gif\n"\
+"Picture is on the right\n\nMore text\n\n"                                 \
+" {{width=100 height=50 border=1 left}}                              \n"\
+"{{width=100 height=50 border=1 left}} http://www.google.com/images/logo.gif\n"\
+"Picture is on the left\n\nMore text\n\n"                                 \
+"{{width=100 height=50 border=1}}\n" \
 "Picture http links have picture with an !http:// link inside, like [http://www.google.com/images/logo.gif http://www.google.com]\n" \
 " Picture http links have picture with an !http:// link inside, like [http://www.google.com/images/logo.gif http://www.google.com]\n" \
 "----\n"                                                                 \
@@ -466,18 +474,19 @@
 " d=0...6 (Sunday...Saturday) m=1...12 (January...December) n=1...31 \n" \
 "\n" \
 "----\n" \
+" To upload file or image into the server with {{upload}}\n" \
+"Upload your file below then go to Index [Index?Folder=images images] \n" \
+"or [Index?Folder=files files] to check your file uploaded:\n\n" \
+"(Note:size allowed can be set to 0 or limited.)\n" \
+"{{upload}}\n" \
+"\n" \
+"----\n" \
 " Define a private zone in the page with {{private}}\n" \
 " Login is required to show after this tag\n" \
 "{{private}}\n" \
 " This text is hidded if you are not logged!\n" \
 "\n" \
-"----\n" \
-" To upload file or image into the server with {{upload}}\n" \
-"Upload your file below then go to Index [Index?Folder=images images] \n" \
-"or [Index?Folder=files files] to check your file uploaded:\n" \
-"{{upload}}\n" \
-"\n" \
-"----\n" \
+"----\n" 
 
 
 #define STYLESHEET                                                       \
@@ -585,7 +594,8 @@
 "background:#f2f2f2;\n" \
 "padding:5px;\n" \
 "}\n" \
-"\n" \
+"\n" 
+
 
 /* use xxd -i favicon.png to generate 
  * png favicon is ok with Firefox >=1.0, Chrome, Opera >=7.0, Safari >=4.0
